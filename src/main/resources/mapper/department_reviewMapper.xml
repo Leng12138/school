@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leng.tms.dao.Department_ReviewDao">
+
+    <select id="getAllReview" resultType="com.leng.tms.bean.Department_Review">
+        select no, sex, rolelevel, review, time from department_review order by priority desc
+    </select>
+
+    <insert id="commitReview" parameterType="com.leng.tms.bean.Department_Review">
+        insert into department_review
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="no != null">
+                no,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="rolelevel != null">
+                rolelevel,
+            </if>
+            <if test="review != null">
+                review,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="no != null">
+                #{no,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="rolelevel != null">
+                #{rolelevel,jdbcType=VARCHAR},
+            </if>
+            <if test="review != null">
+                #{review,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectStudentSex" parameterType="java.lang.String" resultType="java.lang.String">
+        select sex from students where no = #{no,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectTeacherSex" parameterType="java.lang.String" resultType="java.lang.String">
+        select sex from teachers where no = #{no,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
