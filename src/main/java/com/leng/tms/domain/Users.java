@@ -1,4 +1,4 @@
-package com.leng.tms.bean;
+package com.leng.tms.domain;
 
 public class Users {
 
@@ -31,4 +31,5 @@ public class Users {
     public void setRolelevel(String rolelevel) {
         this.rolelevel = rolelevel;
     }
+
 }

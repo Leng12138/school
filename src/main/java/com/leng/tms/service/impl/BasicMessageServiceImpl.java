@@ -1,8 +1,8 @@
 package com.leng.tms.service.impl;
 
-import com.leng.tms.bean.Students;
-import com.leng.tms.bean.TeachClass;
-import com.leng.tms.bean.Teachers;
+import com.leng.tms.domain.Students;
+import com.leng.tms.domain.TeachClass;
+import com.leng.tms.domain.Teachers;
 import com.leng.tms.dao.BasicMessageDao;
 import com.leng.tms.service.BasicMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,4 +50,5 @@ public class BasicMessageServiceImpl implements BasicMessageService {
         basicMessageDao.updateToTeachers(no, name, age, sex, subject);
         basicMessageDao.insertToTeachClass(list);
     }
+
 }

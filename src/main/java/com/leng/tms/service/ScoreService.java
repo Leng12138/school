@@ -1,7 +1,7 @@
 package com.leng.tms.service;
 
 import com.github.pagehelper.PageInfo;
-import com.leng.tms.bean.Students;
+import com.leng.tms.domain.Students;
 
 import java.util.List;
 

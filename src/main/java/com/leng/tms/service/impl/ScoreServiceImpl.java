@@ -2,7 +2,7 @@ package com.leng.tms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.leng.tms.bean.Students;
+import com.leng.tms.domain.Students;
 import com.leng.tms.dao.ScoreDao;
 import com.leng.tms.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,7 @@ public class ScoreServiceImpl implements ScoreService {
         List<String> list = scoreDao.getTeaClass(no);
         PageHelper.startPage(page, 9);
         List<Students> bak = scoreDao.getTeaStudent(list);
-        PageInfo<Students> pageInfo = new PageInfo<>(bak, 3);
-        return pageInfo;
+        return new PageInfo<>(bak, 3);
     }
 
     @Override
@@ -58,14 +57,12 @@ public class ScoreServiceImpl implements ScoreService {
     public PageInfo<Students> getAllStudent(int page) {
         PageHelper.startPage(page, 9);
         List<Students> bak = scoreDao.getAllStudent();
-        PageInfo<Students> pageInfo = new PageInfo<>(bak, 3);
-        return pageInfo;
+        return new PageInfo<>(bak, 3);
     }
 
     @Override
     public List<Students> findStudent(String no, String name, String stuclass) {
-        List<Students> list = scoreDao.findStudent(no, name, stuclass);
-        return list;
+        return scoreDao.findStudent(no, name, stuclass);
     }
 
 }

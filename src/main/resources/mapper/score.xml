@@ -6,7 +6,7 @@
         select teaclass from teachclass where no = #{no,jdbcType=VARCHAR}
     </select>
 
-    <select id="getTeaStudent" resultType="com.leng.tms.bean.Students">
+    <select id="getTeaStudent" resultType="com.leng.tms.domain.Students">
         select * from students where stuclass in
         <foreach collection="list" item="item" open="(" separator="," close=")">
             #{item}
@@ -33,11 +33,11 @@
         update students set sescore = #{sescore,jdbcType=INTEGER} where no = #{no,jdbcType=VARCHAR}
     </update>
 
-    <select id="getAllStudent" resultType="com.leng.tms.bean.Students">
+    <select id="getAllStudent" resultType="com.leng.tms.domain.Students">
         select * from students
     </select>
 
-    <select id="findStudent" resultType="com.leng.tms.bean.Students">
+    <select id="findStudent" resultType="com.leng.tms.domain.Students">
         select * from students
         <where>
             <if test="no != '' and no != null">

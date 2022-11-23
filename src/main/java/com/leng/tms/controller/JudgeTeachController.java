@@ -1,8 +1,8 @@
 package com.leng.tms.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.leng.tms.bean.Teachers;
-import com.leng.tms.bean.Users;
+import com.leng.tms.domain.Teachers;
+import com.leng.tms.domain.Users;
 import com.leng.tms.service.JudgeTeachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +36,9 @@ public class JudgeTeachController {
     @RequestMapping("/judgeteach")
     @ResponseBody
     public String judgeTeach(String no, String clat, String teme, String woco, String qaat) {
-        if (judgeTeachService.judgeTeach(no, clat, teme, woco, qaat))
+        if (judgeTeachService.judgeTeach(no, clat, teme, woco, qaat)) {
             return "success";
+        }
         return "error";
     }
 

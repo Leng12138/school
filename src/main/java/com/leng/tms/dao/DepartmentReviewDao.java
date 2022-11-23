@@ -1,16 +1,16 @@
 package com.leng.tms.dao;
 
-import com.leng.tms.bean.Department_Review;
+import com.leng.tms.domain.DepartmentReview;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface Department_ReviewDao {
+public interface DepartmentReviewDao {
 
-    List<Department_Review> getAllReview();
+    List<DepartmentReview> getAllReview();
 
-    int commitReview(Department_Review department_review);
+    int commitReview(DepartmentReview departmentReview);
 
     String selectStudentSex(String no);
 

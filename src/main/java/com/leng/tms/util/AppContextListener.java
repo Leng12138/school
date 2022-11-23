@@ -6,6 +6,7 @@ import javax.servlet.ServletContextListener;
 import java.sql.DriverManager;
 
 public class AppContextListener implements ServletContextListener {
+
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext context = servletContextEvent.getServletContext();
@@ -15,11 +16,11 @@ public class AppContextListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        try{
-            while(DriverManager.getDrivers().hasMoreElements()){
+        try {
+            while (DriverManager.getDrivers().hasMoreElements()) {
                 DriverManager.deregisterDriver(DriverManager.getDrivers().nextElement());
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

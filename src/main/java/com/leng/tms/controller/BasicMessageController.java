@@ -1,7 +1,7 @@
 package com.leng.tms.controller;
 
-import com.leng.tms.bean.Students;
-import com.leng.tms.bean.Teachers;
+import com.leng.tms.domain.Students;
+import com.leng.tms.domain.Teachers;
 import com.leng.tms.service.BasicMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,4 +46,5 @@ public class BasicMessageController {
         basicMessageService.updateTeacher(username, name, age, sex, teaclass, subject);
         return "success";
     }
+
 }

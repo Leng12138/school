@@ -6,7 +6,7 @@
         select no from teachclass where teaclass = (select stuclass from students where no = #{no,jdbcType=VARCHAR})
     </select>
 
-    <select id="getJudgeResult" resultType="com.leng.tms.bean.Teachers">
+    <select id="getJudgeResult" resultType="com.leng.tms.domain.Teachers">
         select * from teachers where no in
         <foreach collection="list" item="item" open="(" separator="," close=")">
             #{item}
@@ -57,11 +57,11 @@
         no = #{no,jdbcType=VARCHAR}
     </update>
 
-    <select id="getAllJudgeResult" resultType="com.leng.tms.bean.Teachers">
+    <select id="getAllJudgeResult" resultType="com.leng.tms.domain.Teachers">
         select * from teachers
     </select>
 
-    <select id="findTeacher" resultType="com.leng.tms.bean.Teachers">
+    <select id="findTeacher" resultType="com.leng.tms.domain.Teachers">
         select * from teachers
         <where>
             <if test="no != '' and no != null">

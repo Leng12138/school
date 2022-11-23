@@ -1,8 +1,8 @@
-package com.leng.tms.bean;
+package com.leng.tms.domain;
 
 import java.sql.Date;
 
-public class Department_Review {
+public class DepartmentReview {
 
     private String no;
 

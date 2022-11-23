@@ -1,4 +1,4 @@
-package com.leng.tms.bean;
+package com.leng.tms.domain;
 
 public class Students {
 
@@ -101,4 +101,5 @@ public class Students {
     public void setSescore(int sescore) {
         this.sescore = sescore;
     }
+
 }

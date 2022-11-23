@@ -1,8 +1,8 @@
 package com.leng.tms.dao;
 
-import com.leng.tms.bean.Students;
-import com.leng.tms.bean.Teachers;
-import com.leng.tms.bean.Users;
+import com.leng.tms.domain.Students;
+import com.leng.tms.domain.Teachers;
+import com.leng.tms.domain.Users;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.leng.tms.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.leng.tms.bean.Students;
-import com.leng.tms.bean.Users;
+import com.leng.tms.domain.Students;
+import com.leng.tms.domain.Users;
 import com.leng.tms.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,8 +38,9 @@ public class ScoreController {
     @RequestMapping("/entry")
     @ResponseBody
     public String entry(String tno, String sno, int score) {
-        if (scoreService.entry(tno, sno, score))
+        if (scoreService.entry(tno, sno, score)) {
             return "success";
+        }
         return "error";
     }
 

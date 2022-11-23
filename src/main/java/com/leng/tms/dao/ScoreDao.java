@@ -1,6 +1,6 @@
 package com.leng.tms.dao;
 
-import com.leng.tms.bean.Students;
+import com.leng.tms.domain.Students;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

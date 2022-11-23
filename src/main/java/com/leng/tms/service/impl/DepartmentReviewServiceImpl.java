@@ -2,9 +2,9 @@ package com.leng.tms.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.leng.tms.bean.Department_Review;
-import com.leng.tms.dao.Department_ReviewDao;
-import com.leng.tms.service.Department_ReviewService;
+import com.leng.tms.domain.DepartmentReview;
+import com.leng.tms.dao.DepartmentReviewDao;
+import com.leng.tms.service.DepartmentReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,27 +12,26 @@ import java.sql.Date;
 import java.util.List;
 
 @Service
-public class Department_ReviewServiceImpl implements Department_ReviewService {
+public class DepartmentReviewServiceImpl implements DepartmentReviewService {
 
     @Autowired
-    private Department_ReviewDao department_reviewDao;
+    private DepartmentReviewDao departmentReviewDao;
 
     @Override
-    public PageInfo<Department_Review> getAllReview(int page) {
+    public PageInfo<DepartmentReview> getAllReview(int page) {
         PageHelper.startPage(page, 3);
-        List<Department_Review> list = department_reviewDao.getAllReview();
-        PageInfo<Department_Review> pageInfo = new PageInfo<>(list, 3);
-        return pageInfo;
+        List<DepartmentReview> list = departmentReviewDao.getAllReview();
+        return new PageInfo<>(list, 3);
     }
 
     @Override
     public void commitReview(String no, String review, String nowtime) {
-        Department_Review bak = new Department_Review();
+        DepartmentReview bak = new DepartmentReview();
         if (no.charAt(0) == 'S') {
-            bak.setSex(department_reviewDao.selectStudentSex(no));
+            bak.setSex(departmentReviewDao.selectStudentSex(no));
             bak.setRolelevel("同学");
         } else if (no.charAt(0) == 'T') {
-            bak.setSex(department_reviewDao.selectTeacherSex(no));
+            bak.setSex(departmentReviewDao.selectTeacherSex(no));
             bak.setRolelevel("教师");
         } else {
             bak.setSex("官方");
@@ -42,7 +41,7 @@ public class Department_ReviewServiceImpl implements Department_ReviewService {
         bak.setReview(review);
         Date time = Date.valueOf(nowtime);
         bak.setTime(time);
-        department_reviewDao.commitReview(bak);
+        departmentReviewDao.commitReview(bak);
     }
 
 }

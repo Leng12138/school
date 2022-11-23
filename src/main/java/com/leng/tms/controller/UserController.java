@@ -1,6 +1,6 @@
 package com.leng.tms.controller;
 
-import com.leng.tms.bean.Users;
+import com.leng.tms.domain.Users;
 import com.leng.tms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class UserController {
     @RequestMapping("/registe")
     public String registe(Users user, Model model) {
         if (user.getUsername() == null || user.getPassword() == null || user.getRolelevel() == null ||
-                user.getUsername().equals("") || user.getPassword().equals("") || user.getRolelevel().equals("")) {
+                "".equals(user.getUsername()) || "".equals(user.getPassword()) || "".equals(user.getRolelevel())) {
             model.addAttribute("msg", "请完善所有选项");
             return "forward:/registe.jsp";
         } else if (userService.registe(user)) {
@@ -48,8 +48,9 @@ public class UserController {
     @RequestMapping("/check")
     @ResponseBody
     public String check(String no) {
-        if (userService.check(no))
+        if (userService.check(no)) {
             return null;
+        }
         return "miss";
     }
 

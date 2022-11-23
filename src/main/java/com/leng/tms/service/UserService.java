@@ -1,6 +1,6 @@
 package com.leng.tms.service;
 
-import com.leng.tms.bean.Users;
+import com.leng.tms.domain.Users;
 
 public interface UserService {
 
