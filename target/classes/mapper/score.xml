@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leng.tms.dao.ScoreDao">
+
+    <select id="getTeaClass" parameterType="java.lang.String" resultType="java.lang.String">
+        select teaclass from teachclass where no = #{no,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getTeaStudent" resultType="com.leng.tms.domain.Students">
+        select * from students where stuclass in
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getTeaSubject" parameterType="java.lang.String" resultType="java.lang.String">
+        select subject from teachers where no = #{no,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateC">
+        update students set cscore = #{cscore,jdbcType=INTEGER} where no = #{no,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateOS">
+        update students set osscore = #{osscore,jdbcType=INTEGER} where no = #{no,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateCI">
+        update students set ciscore = #{ciscore,jdbcType=INTEGER} where no = #{no,jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateSE">
+        update students set sescore = #{sescore,jdbcType=INTEGER} where no = #{no,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getAllStudent" resultType="com.leng.tms.domain.Students">
+        select * from students
+    </select>
+
+    <select id="findStudent" resultType="com.leng.tms.domain.Students">
+        select * from students
+        <where>
+            <if test="no != '' and no != null">
+                and no = #{no,jdbcType=VARCHAR}
+            </if>
+            <if test="name != '' and name != null">
+                and name like '%${name}%'
+            </if>
+            <if test="stuclass != '' and stuclass != null">
+                and stuclass = #{stuclass,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+</mapper>
